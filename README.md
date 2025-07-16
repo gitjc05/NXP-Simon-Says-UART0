@@ -1,6 +1,6 @@
 # Simon Says Game Project
 
-![NXP Freedom Board Example](Screenshot 2024-11-16 204118.png)
+![NXP Freedom Board Example]([Screenshot 2024-11-16 204118.png](https://github.com/gitjc05/NXP-Simon-Says-UART0/blob/main/Screenshot%202024-11-16%20204118.png))
 
 ## Overview
 This project implements a Simon Says game on the NXP Freedom board. The game displays a sequence of colored lights, and the player must enter the corresponding letters via UART0 terminal before time runs out. As the game progresses, the sequences get faster, increasing the difficulty.
