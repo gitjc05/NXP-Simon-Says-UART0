@@ -1,0 +1,64 @@
+
+\\ Lab 12 Pre-Lab Joaquin Cabra Romero
+
+
+
+
+\\1) generating number between 0-3 inclusive
+\\ where MainClock is an exported variable from assembly using PIT timer
+int randint(int top) {
+	int seed = MainClock;
+	seed += 13*MainClock;
+	top = seed % top;
+	top ++;
+	return top;
+}
+
+\\2) waiting until user types something or the time is up:
+\\ in main loop
+\\ where typed is an exported variable from assembly, set to 1 if rxqueue.size!=0, else 0;
+\\ where count is an expoerted variable from assembly, a second clock Using PIT ISR
+\\ this includes the extra credit from the lab of taking input until times up.
+	...
+	UInt8 hasTyped = Typed;
+			
+	roundTime *= 100;
+	Count = 0;
+	int curCount = Count;
+	char r;
+	
+	while (hasTyped == 0 & curCount <= roundTime) {
+		hasTyped = Typed;
+		curCount = Count;
+		if (hasTyped == 1) {
+			r = GetChar();
+			if (charToLED(r) != ledCOl) {
+				hasTyped = 0;
+				PutChar(r);
+				PutStringSB(" Incorrect. try again\n\r", 70);
+			}
+		}
+	}
+	...
+	
+\\breaks out if time is up or user typed something 
+\\as RxQueue size will be increased by 1 from the enqueue operation in the ISR
+
+\\3)
+\\Computing score for the round:
+\\ called after the end of each round if correct answer input
+\\ takes in a time which is the amount of time taken for the user answer (in miliseconds),
+\\ ^ and round number
+
+int calcScore(int timeR, int roundN) {
+	// score takes in the time it took for the user to respond
+	// score also takes in the current round number
+	// scoring rewards speed and ability to make it to later rounds
+	// returns the calculated score
+	int remaining = 1100 - timeR;
+	int multiple = roundN;
+	multiple *= multiple;
+	multiple ++;
+	return remaining * multiple;
+}
+
