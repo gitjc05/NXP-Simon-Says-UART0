@@ -16,9 +16,9 @@ This project implements a Simon Says game on the NXP Freedom board. The game dis
 - UART0 connection for input and output (Used Putty in this case)
 
 ## Game play Example
-![Start](IMG_7441.png)
-![Turn](IMG_7442.png)
-![Points](IMG_7443.png)
+![Start](IMG_7441.PNG)
+![Turn](IMG_7442.PNG)
+![Points](IMG_7443.PNG)
 
 ## Final Output Example
 ![NXP Freedom Board Example](Screenshot%202024-11-16%20204118.png)
